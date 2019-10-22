@@ -36,11 +36,13 @@ async function test(){
 	let newStuff = "";
 
 	for (let a of articles){
+		console.log(a);
 		if (a == ''){
 			continue;
 		}
-		let parts = a.split(" ");
-		let html = `<a href=${api.fullPath(parts[2])}>${parts[0]}</a>`;
+		let parts = a.split("#");
+		console.log(api.fullPath(parts[1]));
+		let html = `<a href=${api.fullPath("/articles/"+parts[1])}>${parts[0]}</a>`;
 		newStuff = newStuff + html + "\n";
 	}
 	let element = document.getElementById("content");

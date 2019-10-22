@@ -30,19 +30,15 @@ func HandleArticles(w http.ResponseWriter, r *http.Request) {
 		var sb strings.Builder
 
 		for _, article := range articles{
-			sb.WriteString(article.Name)
-			sb.WriteString(" ")
-			sb.WriteString(article.File)
-			sb.WriteString(" ")
-			sb.WriteString("/articles/")
-			sb.WriteString(article.Name)
+			sb.WriteString(encodeListing(article))
 			sb.WriteString("\n");
 		}
 
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte(sb.String()))
 	}else{
-		fmt.Printf("Will need to serve the file named '%s'\n", articleName)
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(getArticleBody(articleName)))
 	}
 }
 
