@@ -1,5 +1,5 @@
 serve
 dist
-./static/*.js
+*.js
 *.*.swp
 articles/*
