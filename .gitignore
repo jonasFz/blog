@@ -1,0 +1,5 @@
+serve
+dist
+./static/*.js
+*.*.swp
+articles/*
